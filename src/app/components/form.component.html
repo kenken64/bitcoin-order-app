@@ -1,0 +1,133 @@
+<form name = "bitcoinForm" #bitcoinForm="ngForm" (ngSubmit)="bitcoinForm.form.valid && processForm(bitcoinForm, myPrice, myAmt)">
+    <div fxLayout="column"
+    fxLayoutAlign=
+    “space-around” class="sideSpace">
+
+    <mat-form-field>
+        <input matInput name = "contactno" placeholder="Contact No." ngModel #contactnoField="ngModel" required pattern="[0-9\-\)\(\+]+">
+    </mat-form-field>
+    <mat-error *ngIf="contactnoField.touched && contactnoField.errors?.required">
+        Contact No. is required
+    </mat-error>
+ 
+    <mat-error *ngIf="contactnoField.touched && contactnoField.errors?.pattern">
+        Contact No. can only contain numbers and these symbols: +, -, ()
+    </mat-error>
+    <br>
+    <mat-form-field>
+        <input matInput name = "name" placeholder="Name" ngModel #nameField="ngModel" required>
+    </mat-form-field>
+    <mat-error *ngIf="nameField.touched && nameField.invalid">
+        Name is required
+    </mat-error>
+    <br>
+
+    <!-- required validation must be placed in g mat-radio-group -->
+    <mat-label>Gender *</mat-label>
+    <mat-radio-group
+    class="radio-group"
+    aria-labelledby="gender_label"
+    ngModel #genderField="ngModel"
+    name="gender" required>
+        <mat-radio-button *ngFor="let gender of genderList" [value]="gender" class="radio-button">
+            {{gender}}
+        </mat-radio-button>
+    </mat-radio-group>
+    <mat-error *ngIf="genderField.touched && genderField.errors?.required">
+        Gender is required
+    </mat-error>
+    <br>
+    <!-- without datepicker -->
+    <mat-form-field>
+        <input matInput name = "dob" type="date" placeholder="Date of Birth" ngModel #dobField="ngModel" required (input)="checkAgeValid(dobField.value)">
+    </mat-form-field>
+    <mat-error *ngIf="dobField.touched && dobField.errors?.required">
+        Date of Birth is required
+    </mat-error>
+    <mat-error *ngIf="dobField.touched && !validAge">
+        You need to be 21 years and above.
+    </mat-error>
+    <br>
+    <!-- with datepicker and touchUI -->
+    <mat-form-field>
+        <input matInput
+        [matDatepicker]="datepicker"
+        placeholder="Order Date"
+        ngModelname="orderDate">
+        <mat-datepicker-toggle matSuffix
+        [for]="datepicker">
+        </mat-datepicker-toggle>
+        <mat-datepicker touchUi=true #datepicker>
+        </mat-datepicker>
+    </mat-form-field>
+    <br>
+
+    <!-- Do NOT parse orderTypeField.value into the checkBuyOrSell event because it does not update fast enough -->
+    <mat-form-field>
+        <mat-label>Order Type</mat-label>
+        <select matNativeControl name="orderType" required ngModel #orderTypeField="ngModel" [(ngModel)]='orderTypeDefault' (ngModelChange)="[checkBuyOrSell($event), recalcMyAmt($event, unitField.value)]">
+          <option value="buy">Buy</option>
+          <option value="sell">Sell</option>
+        </select>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+        <input matInput name = "unit" type="number" placeholder="Order Unit" ngModel #unitField="ngModel" required min=0 (input)="recalcMyAmt(orderTypeField.value, unitField.value)">
+    </mat-form-field>
+    <mat-error *ngIf="bitcoinForm.submitted && unitField.invalid">
+        Order Unit is required
+    </mat-error>
+    <br>
+
+    <div fxLayout="row"
+        fxLayoutAlign="space-around" class = "myTable">
+        <div>
+            <div><h1>Cryptocurrency Pair</h1></div>
+            <div><h2>SGD/BTC</h2></div>
+        </div>
+        <div>
+            <div><h1>Price</h1></div>
+            <div class = "green"><h2>SGD {{myPrice}}</h2></div>
+        </div>
+        <div>
+            <div><h1>Price * Unit</h1></div>
+            <div class = "red"> <h2>SGD {{myAmt}}</h2></div>
+        </div>
+    </div>
+    <br>
+
+    <!-- disabled when order type is buy -->
+    <mat-form-field>
+        <input matInput name = "myQr" placeholder="Paylah/Paynow QR Code URL" ngModel #myQrField="ngModel" required [disabled]="buy">
+    </mat-form-field>
+    <mat-error *ngIf="bitcoinForm.submitted && myQrField.invalid">
+        Paylah/Paynow QR Code URL is required
+    </mat-error>
+    <mat-hint *ngIf="myQrField.disabled">
+        Paylah/Paynow QR Code URL is disabled when order type is buy
+    </mat-hint>
+    <br>
+
+    <!-- disabled when order type is sell -->
+    <mat-form-field>
+        <input matInput name = "bitAddress" placeholder="Bitcoin Address" ngModel #bitAddressField="ngModel" required [disabled]="!buy">
+    </mat-form-field>
+    <mat-error *ngIf="bitcoinForm.submitted && bitAddressField.invalid">
+        Bitcoin Address is required
+    </mat-error>
+    <mat-hint *ngIf="bitAddressField.disabled">
+        Bitcoin Address is disabled when order type is sell
+    </mat-hint>
+    <br>
+
+    <div fxLayout="row" fxLayoutAlign="space-around">
+        <button mat-raised-button type="submit" color="primary" [disabled] = "bitcoinForm.invalid || !validAge">Order</button>
+        <button mat-raised-button type="button" (click) = "viewOrderList()">View Order List</button>
+        <button mat-raised-button type="reset" >Reset</button>
+
+    </div>
+
+    <br><br>
+    </div>
+</form>

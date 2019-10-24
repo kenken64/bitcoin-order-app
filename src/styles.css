@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    
+}
+/* html { background-color: #B2E0DF; } */
+/* 
+body::after{
+    background-image: url("./assets/back2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 2vw;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;  
+} */

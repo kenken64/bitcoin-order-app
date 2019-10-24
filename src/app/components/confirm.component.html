@@ -1,0 +1,41 @@
+<div>
+    <h1> Order Details </h1>
+
+
+    <!-- public contactNo: string,
+    public name: string,
+    public gender: string,
+    public dob: string,
+    public orderDate: string,
+    public orderType: string,
+    public orderUnit: number,
+    public price: number,
+    public qrUrl: string,
+    public address: string,
+    public amt: number -->
+    <h3> Contact No. : {{order.contactNo}}</h3>
+    <h3> Name : {{order.name}}</h3>
+    <h3> Gender : {{order.gender}}</h3>
+    <h3> Date of birth : {{order.dob}}</h3>
+    <h3> Order Date : {{order.orderDate}}</h3>
+    <h3> Order Type : {{order.orderType}}</h3>
+    <h3> Order Unit : {{order.orderUnit}}</h3>
+    <h3> Price : {{order.price}}</h3>
+    <h3> Price * Unit: {{order.amt}}</h3>
+    <h3> Paylah/Paynow QR Code URL : </h3>
+    <div><img src = "{{order.qrUrl}}" alt="QR Code image"></div>
+    <h3> Bitcoin Address : {{order.address}}</h3>
+</div>
+
+<div *ngIf="order.orderType == 'sell'">
+    Order Type = {{order.orderType}}: <br>
+    Custodian BTC address = 'bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq'<br>
+    Once the BTC are wired across, we will send you the funds in SGD to your Paynow/Paylah bank account.
+</div>
+
+<div *ngIf="order.orderType == 'buy'">
+        Order Type = {{order.orderType}}: <br>
+        <img src = "https://images-eu.ssl-images-amazon.com/images/I/51LLSXPtTtL.png" alt="QR Code image">
+        <br>
+        Once the SGD funds are wire across to the above QR code, we will send you the bitcoin to your wallet address.
+    </div>

@@ -1,0 +1,18 @@
+<mat-toolbar class="green">
+    <mat-toolbar-row [style.backgroundColor]="'#81DF95'">
+        <img src = "../assets/pixel.gif" alt = "pixelImg" class="pixel">
+        <span >Buy and Sell bitcoin!</span>
+        <span class="example-spacer"></span>
+        <span> &nbsp;</span>
+        <button mat-raised-button color="primary" (click)="buyBtc()">
+            Buy
+        </button>
+        <span> &nbsp;</span>
+        <button mat-raised-button color="accent" (click)="sellBtc()">
+            Sell
+        </button>
+   </mat-toolbar-row>
+</mat-toolbar>
+<body>
+<router-outlet></router-outlet>
+</body>

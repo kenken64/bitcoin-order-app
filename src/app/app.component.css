@@ -1,0 +1,36 @@
+/* img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200%;
+} */
+
+body {
+    height: 160%;
+    display: block;
+    position: relative;
+}
+
+body::after {
+    content: "";
+    background-image: url("../assets/back2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 2vw;
+    opacity: 0.4;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+}
+
+img{
+    width: 3.5%;
+}
+
+.example-spacer {
+	flex: 1 1 500px;
+}

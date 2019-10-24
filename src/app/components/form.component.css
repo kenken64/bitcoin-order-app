@@ -1,0 +1,44 @@
+.radio-button {
+    margin: 5px;
+  }
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+.example-margin {
+    margin: 0 10px;
+}
+
+.example-icon {
+    padding: 0 14px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.sideSpace{
+    padding: 5%;
+}
+
+
+.myTable{
+    border: 5px solid;
+    border-color: #2bc36e;
+    border-radius: 20px;
+}
+
+.green{
+    color: green;
+}
+
+.red{
+    color: red;
+}
+
+img{
+    width: 3.5%;
+}
