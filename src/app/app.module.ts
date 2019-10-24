@@ -13,14 +13,15 @@ import { ConfirmComponent } from './components/confirm.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ListComponent } from './components/list.component';
-
+import { EditComponent } from './components/edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
     ConfirmComponent,
-    ListComponent
+    ListComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

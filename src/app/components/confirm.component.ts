@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BitcoinService } from '../services/bitcoin.service';
-import { Order } from '../order';
+import { Order } from '../models/order';
+
 @Component({
   selector: 'app-confirm',
   templateUrl: './confirm.component.html',
@@ -11,15 +12,21 @@ import { Order } from '../order';
 export class ConfirmComponent implements OnInit {
 
   order :Order;
+  orderType: string;
+  orderId: string;
   genderDefined;
   constructor(private bitcoinSvc: BitcoinService, private activatedRoute: ActivatedRoute, 
     private router: Router) { }
 
   ngOnInit() {
-    this.order = this.bitcoinSvc.getOrder();
+    this.orderId = this.activatedRoute.snapshot.params.orderId;
+    console.log(this.orderId);
+    this.bitcoinSvc.getOrderDetails(this.orderId).then(result=>{
+      this.order = result;
+      this.orderType = result.orderType;
+    });
   }
 
-  orderType = this.activatedRoute.snapshot.params.orderType;
   back() {
     this.router.navigate(['/']);
   }

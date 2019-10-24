@@ -1,57 +1,60 @@
-import { Component, OnInit, AfterViewInit, OnChanges , Directive } from '@angular/core';
+import { Component, OnInit, Directive } from '@angular/core';
 import { NgForm} from '@angular/forms';
 import { BitcoinService } from '../services/bitcoin.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from '../models/order';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.css']
 })
-
-export class FormComponent implements OnInit, AfterViewInit, OnChanges {
-  orderTypeDefault = "Buy";
+export class EditComponent implements OnInit {
+  order :Order;
+  orderTypeDefault = "buy";
   validAge = true;
   genderField: string;
   genderList: string[] = ['Male', 'Female'];
+  orderId: string;
+  gender: string;
+  myAmt:string = '0.00';
+  buy = true;
+  myPrice = 0;
   tomorrow= new Date();
 
   constructor(private bitcoinSvc: BitcoinService, private activatedRoute: ActivatedRoute, 
     private router: Router) { }
 
-  ngAfterViewInit(){
-    
-  }
-  
-  ngOnChanges(){
-
-  }
-
   ngOnInit() {
-    console.log("FORM !!!!");
-    this.orderTypeDefault = this.activatedRoute.snapshot.params.orderType;
-    console.log(this.orderTypeDefault);
+    this.orderId = this.activatedRoute.snapshot.params.orderId;
     this.bitcoinSvc.getPrice()
     .then(result => {
       this.myPrice = result.BTCSGD.ask; //initial load will get ask because default order type is buy
-      })
+    })
     .catch(error=>{
       console.log(error);
     });
+
+    this.bitcoinSvc.getOrderDetails(this.orderId).then(result=>{
+      this.order = result;
+      this.orderTypeDefault = result.orderType;
+      this.gender = result.gender;
+      console.log(result.orderType);
+      console.log(result.orderUnit);
+      
+      this.recalcMyAmt(result.orderType, result.orderUnit);
+    });
   }
 
-  processForm(f:NgForm, myPrice, myAmt){
-    console.log("processForm !");
-    let x = this.bitcoinSvc.saveOrderDetails(f.value, myPrice, myAmt).then(result=>{
+  processForm(f:NgForm){
+    this.bitcoinSvc.updateOrderDetails(this.orderId, f.value).then(result=>{
       console.log(result);
-      this.router.navigate(['/confirm', result.id]);
+      this.router.navigate(['/confirm', this.orderId]);
     });
     
   }
 
   checkAgeValid(dob){
-
     let myDob = new Date (dob);
     var ageDifMs = Date.now() - myDob.getTime();
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
@@ -65,8 +68,7 @@ export class FormComponent implements OnInit, AfterViewInit, OnChanges {
     }
     console.log(this.validAge);
   }
-  buy = true;
-  myPrice = 0;
+  
   checkBuyOrSell(f: string){
     console.log("f=", f);
     if (f == "Buy"){
@@ -77,11 +79,11 @@ export class FormComponent implements OnInit, AfterViewInit, OnChanges {
     }
   }
 
-  myAmt:string = '0.00';
   recalcMyAmt(buyOrSell, unit:number){
     console.log("buyOrSell =", buyOrSell);
     this.bitcoinSvc.getPrice()
     .then(result => {
+      console.log(result);
       if (buyOrSell == "Buy"){
         this.myPrice = result.BTCSGD.ask;
       }
@@ -91,20 +93,20 @@ export class FormComponent implements OnInit, AfterViewInit, OnChanges {
       else {
         this.myPrice = 0;
       }
+      console.log("recalculating myAmt " + this.myPrice);
+      if ( isNaN(unit) || isNaN(this.myPrice) ){
+        this.myAmt = '0.00';     
+      }
+      else {
+        let sum = unit*this.myPrice;
+        this.myAmt = sum.toFixed(2);
+      }
+      console.log(this.myAmt);
     })
     .catch(error=>{
       console.log(error);
     });
-
-    console.log("recalculating myAmt");
-    if ( isNaN(unit) || isNaN(this.myPrice) ){
-      this.myAmt = '0.00';     
-    }
-    else {
-      let sum = unit*this.myPrice;
-      this.myAmt = sum.toFixed(2);
-    }
-    console.log(this.myAmt);
   }
+
 
 }
