@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,18 +9,19 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'bitcoin';
 
-  constructor(private router: Router,private ngZone: NgZone){
-
-  }
+  constructor(private router: Router){}
+  
   buyBtc(){
     console.log("Buy BTC ");
-    this.ngZone.run(() =>
-      this.router.navigate(['form/Buy']));
+    setTimeout(()=>{
+      this.router.navigate(['form/Buy']);
+    },400);  
   }
 
   sellBtc(){
     console.log("Sell BTC ");
-    this.ngZone.run(() =>
-      this.router.navigate(['form/Sell']));
+    setTimeout(()=>{
+      this.router.navigate(['form/Sell']);
+    },400);
   }
 }

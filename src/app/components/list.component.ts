@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
     this.bitcoinSvc.getOrderList().then(result=>{
       console.log(result);
       this.btcOrders= result;
-    })
+    });
   }
 
   navigateToEditOrder(orderId) {
