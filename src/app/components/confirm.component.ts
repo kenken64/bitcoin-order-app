@@ -10,18 +10,17 @@ import { Order } from '../models/order';
 })
 
 export class ConfirmComponent implements OnInit {
-
-  order :Order;
+  order: Order;
   orderType: string;
   orderId: string;
   genderDefined;
-  constructor(private bitcoinSvc: BitcoinService, private activatedRoute: ActivatedRoute, 
-    private router: Router) { }
+  constructor(private bitcoinSvc: BitcoinService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.orderId = this.activatedRoute.snapshot.params.orderId;
-    console.log("ConfirmComponent > " + this.orderId);
-    this.bitcoinSvc.getOrderDetails(this.orderId).then(result=>{
+    this.bitcoinSvc.getOrderDetails(this.orderId).then(result => {
       this.order = result;
       this.orderType = result.orderType;
     });

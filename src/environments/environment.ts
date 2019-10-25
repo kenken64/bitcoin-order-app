@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: "/api"
+  api_url: 'https://radiant-dawn-95135.herokuapp.com/api'
 };
 
 /*

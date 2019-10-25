@@ -9,19 +9,17 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'bitcoin';
 
-  constructor(private router: Router){}
-  
-  buyBtc(){
-    console.log("Buy BTC ");
-    setTimeout(()=>{
+  constructor(private router: Router) { }
+
+  buyBtc() {
+    setTimeout(() => {
       this.router.navigate(['form/Buy']);
-    },400);  
+    }, 400);
   }
 
-  sellBtc(){
-    console.log("Sell BTC ");
-    setTimeout(()=>{
+  sellBtc() {
+    setTimeout(() => {
       this.router.navigate(['form/Sell']);
-    },400);
+    }, 400);
   }
 }
