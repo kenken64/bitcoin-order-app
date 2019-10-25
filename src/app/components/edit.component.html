@@ -101,7 +101,7 @@
 
     <!-- disabled when order type is buy -->
     <mat-form-field>
-        <input matInput name="qrUrl" placeholder="Paylah/Paynow QR Code URL" #myQrField="ngModel" [(ngModel)]="order.qrUrl" required [disabled]="order.orderType=== 'Buy'">
+        <input matInput name="qrUrl" placeholder="Paylah/Paynow QR Code URL" #myQrField="ngModel" ngModel required [disabled]="order.orderType=== 'Buy'">
     </mat-form-field>
     <mat-error *ngIf="bitcoinForm.submitted && myQrField.invalid">
         Paylah/Paynow QR Code URL is required
@@ -113,7 +113,7 @@
 
     <!-- disabled when order type is sell -->
     <mat-form-field>
-        <input matInput name="address" placeholder="Bitcoin Address" #bitAddressField="ngModel" [(ngModel)]="order.address" required [disabled]="order.orderType=== 'Sell'">
+        <input matInput name="address" placeholder="Bitcoin Address" #bitAddressField="ngModel" ngModel required [disabled]="order.orderType=== 'Sell'">
     </mat-form-field>
     <mat-error *ngIf="bitcoinForm.submitted && bitAddressField.invalid">
         Bitcoin Address is required
