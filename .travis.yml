@@ -12,6 +12,7 @@ before_script:
   - npm install -g @angular/cli
   
 script:
+  - ng lint
   - ng build --base-href https://kenken64.github.io/bitcoin-order-app/
 
 deploy:
