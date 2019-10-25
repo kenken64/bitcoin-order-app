@@ -15,7 +15,7 @@ export class BitcoinService {
   
   myServicePrice :number;
 
-  getPrice(): Promise<any> {
+  public getPrice(): Promise<any> {
     return (
       this.http.get<any>(`${this.bitcoinPriceApiUrl}?primaryCurry=SGD&secondary=BTC`).toPromise()
     );
@@ -26,12 +26,12 @@ export class BitcoinService {
     return this.http.get<Order>(this.bitcoinApiUrl+'/' + orderId).toPromise();
   }
 
-  getOrderList(): Promise<any>{
+  public getOrderList(): Promise<any>{
     console.log("getOrderList");
     return this.http.get<any>(this.bitcoinApiUrl).toPromise();
   }
 
-  updateOrderDetails(orderId, order){
+  public updateOrderDetails(orderId, order){
     console.log("updateOrderDetails" + order);
     return this.http.put<any>(this.bitcoinApiUrl+'?orderId=' + orderId, order).toPromise();
   }

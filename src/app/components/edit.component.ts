@@ -10,7 +10,7 @@ import { Order } from '../models/order';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  order :Order;
+  order :Order = new Order('','','','','','',0,0,'','',0);
   orderTypeDefault = "buy";
   validAge = true;
   genderField: string;
@@ -41,15 +41,17 @@ export class EditComponent implements OnInit {
       this.gender = result.gender;
       console.log(result.orderType);
       console.log(result.orderUnit);
-      
       this.recalcMyAmt(result.orderType, result.orderUnit);
     });
   }
 
   processForm(f:NgForm){
+    console.log(this.orderId);
+    f.value.amt = this.myAmt;
+    f.value.price = this.myPrice;
     this.bitcoinSvc.updateOrderDetails(this.orderId, f.value).then(result=>{
       console.log(result);
-      this.router.navigate(['/confirm', this.orderId]);
+      this.router.navigate(['/confirm', result.id]);
     });
     
   }

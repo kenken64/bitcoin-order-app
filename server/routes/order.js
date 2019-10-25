@@ -1,48 +1,7 @@
+const uuidv1 = require('uuid/v1');
+
 module.exports = function(app,API_URL){
-    orderList = [
-        {
-            id: 0,
-            contactNo: "3242",
-            name: "Kenneth",
-            gender: "Male",
-            dob: new Date(),
-            orderDate: new Date(),
-            orderType: 'Sell',
-            orderUnit: 100,
-            price: 30000,
-            qrUrl: '',
-            address: '',
-            amt: 3000000
-        },
-        {
-            id: 1,
-            contactNo: "3242",
-            name: "Kenneth",
-            gender: "Female",
-            dob: new Date(),
-            orderDate: new Date(),
-            orderType: 'Buy',
-            orderUnit: 100,
-            price: 10000,
-            qrUrl: 'https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/22041032646/original/RgItugeuFVq91GFRfS4iNcUFzoOKjRuKjA.png',
-            address: 'Singapore',
-            amt: 1000000
-        },
-        {
-            id: 2,
-            contactNo: "3242",
-            name: "Kenneth",
-            gender: "Female",
-            dob: new Date(),
-            orderDate: new Date(),
-            orderType: 'Buy',
-            orderUnit: 100,
-            price: 20000,
-            qrUrl: 'https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/22041032646/original/RgItugeuFVq91GFRfS4iNcUFzoOKjRuKjA.png',
-            address: 'Singapore',
-            amt: 2000000
-        }
-    ];
+    orderList = [];
     const BTC_API_URL = `${API_URL}/bitcoin`;
 
     app.post(BTC_API_URL, (req,res)=>{
@@ -51,7 +10,7 @@ module.exports = function(app,API_URL){
         console.log(order);
         if(typeof(order) !=='undefined'){
             console.log(">>>>>" + order);
-            order.id = orderList.length++;
+            order.id = uuidv1();
             orderList.push(order);
             res.status(200).json(order);
         }
@@ -108,6 +67,7 @@ module.exports = function(app,API_URL){
             ordertoUpdate.orderDate = order.orderDate;
             ordertoUpdate.orderType = order.orderType;
             ordertoUpdate.orderUnit = order.orderUnit;
+            console.log("PRICE > " + order.price);
             ordertoUpdate.price = order.price;
             ordertoUpdate.qrUrl = order.qrUrl;
             ordertoUpdate.address = order.address;
