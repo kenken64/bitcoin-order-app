@@ -13,7 +13,7 @@ before_script:
   
 script:
   - ng lint
-  - ng build --base-href https://kenken64.github.io/bitcoin-order-app/
+  - ng build --prod --base-href https://kenken64.github.io/bitcoin-order-app/
 
 deploy:
   provider: pages
