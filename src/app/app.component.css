@@ -13,7 +13,7 @@ body {
 
 body::after {
     content: "";
-    background-image: url("assets/back2.jpg");
+    background-image: url("../assets/back2.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
