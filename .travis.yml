@@ -1,0 +1,37 @@
+language: node_js
+node_js:
+  - node
+
+dist: bionic
+sudo: required
+
+notifications:
+  email:
+    recipients:
+      - melvin.lee2@ncs.com.sg
+    on_success: always
+    on_failure: always
+  slack: 
+    rooms:
+      - csf-2019:JOLzMXebwOog6dJnFQ7yVERe#ken-build
+    on_success: change
+    on_failure: always 
+    template:
+      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} in PR <%{pull_request_url}|#%{pull_request_number}> by %{author} %{result} in %{duration}"  
+branches:
+  only:
+   - master
+before_script:
+  - npm install -g @angular/cli
+  - npm install -g now
+script:
+  - ng build --prod --base-href https://melvinn91.github.io/bitcoin-order-app/
+
+  
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/bitcoin-order-app
+  on:
+    branch: master
