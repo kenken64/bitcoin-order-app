@@ -1,0 +1,98 @@
+{
+  "configVersion": 1,
+  "timestamp": 1573632619290,
+  "index": "https://kenken64.github.io/bitcoin-order-app/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "https://kenken64.github.io/bitcoin-order-app/favicon.ico",
+        "https://kenken64.github.io/bitcoin-order-app/index.html",
+        "https://kenken64.github.io/bitcoin-order-app/main-es2015.7b2612ce661b10e3b1a2.js",
+        "https://kenken64.github.io/bitcoin-order-app/main-es5.7b2612ce661b10e3b1a2.js",
+        "https://kenken64.github.io/bitcoin-order-app/manifest.webmanifest",
+        "https://kenken64.github.io/bitcoin-order-app/polyfills-es2015.d3e61f0dd2b58e518eca.js",
+        "https://kenken64.github.io/bitcoin-order-app/polyfills-es5.517f1d5415025b3e9b1a.js",
+        "https://kenken64.github.io/bitcoin-order-app/runtime-es2015.b948044840398824f16e.js",
+        "https://kenken64.github.io/bitcoin-order-app/runtime-es5.b948044840398824f16e.js",
+        "https://kenken64.github.io/bitcoin-order-app/styles.cd5cd5bb33d5d36675b8.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "https://kenken64.github.io/bitcoin-order-app/assets/back2.jpg",
+        "https://kenken64.github.io/bitcoin-order-app/assets/back3.png",
+        "https://kenken64.github.io/bitcoin-order-app/assets/back4.jpg",
+        "https://kenken64.github.io/bitcoin-order-app/assets/back5.jpg",
+        "https://kenken64.github.io/bitcoin-order-app/assets/back6.jpg",
+        "https://kenken64.github.io/bitcoin-order-app/assets/background.jpg",
+        "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-128x128.png",
+        "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-144x144.png",
+        "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-152x152.png",
+        "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-192x192.png",
+        "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-384x384.png",
+        "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-512x512.png",
+        "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-72x72.png",
+        "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-96x96.png",
+        "https://kenken64.github.io/bitcoin-order-app/assets/img/BCH.svg",
+        "https://kenken64.github.io/bitcoin-order-app/assets/pixel.gif",
+        "https://kenken64.github.io/bitcoin-order-app/back6.b820a7afbeaf4e4c5246.jpg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://kenken64.github.io/bitcoin-order-app/assets/back2.jpg": "882251ab7b28aecf7e9b9473601715fd8e0b5ae9",
+    "https://kenken64.github.io/bitcoin-order-app/assets/back3.png": "5e0144d39db4ce2201f1f5ae0e02a11dca8b8030",
+    "https://kenken64.github.io/bitcoin-order-app/assets/back4.jpg": "2d3f786549a37445d53d949b742458234b80c7c3",
+    "https://kenken64.github.io/bitcoin-order-app/assets/back5.jpg": "3331c93fd153a1e88ae77a9445150dd780be1a62",
+    "https://kenken64.github.io/bitcoin-order-app/assets/back6.jpg": "bb1d88aec46a62d77cf358868f406f68399e7b8f",
+    "https://kenken64.github.io/bitcoin-order-app/assets/background.jpg": "2a7694fdf75ce8d74e449d6e806d3ec7ea1e9e6b",
+    "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "https://kenken64.github.io/bitcoin-order-app/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://kenken64.github.io/bitcoin-order-app/assets/img/BCH.svg": "47c3dbf4b1059834f740ce1fad644ba50d88d899",
+    "https://kenken64.github.io/bitcoin-order-app/assets/pixel.gif": "87bb3a5dcd68684dee2e401dc8ed016eb6bea75f",
+    "https://kenken64.github.io/bitcoin-order-app/back6.b820a7afbeaf4e4c5246.jpg": "bb1d88aec46a62d77cf358868f406f68399e7b8f",
+    "https://kenken64.github.io/bitcoin-order-app/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "https://kenken64.github.io/bitcoin-order-app/index.html": "c370f1120e139e0156426e4c8b9ffd73bb767fff",
+    "https://kenken64.github.io/bitcoin-order-app/main-es2015.7b2612ce661b10e3b1a2.js": "55b6b3e432fbeee57ebd5ea16e89739c6be4012a",
+    "https://kenken64.github.io/bitcoin-order-app/main-es5.7b2612ce661b10e3b1a2.js": "00cd5655d5d063b12e0ed745198b30d38fcf5d17",
+    "https://kenken64.github.io/bitcoin-order-app/manifest.webmanifest": "da1eee6ec517d6398dc60e53058e5fec8304e10f",
+    "https://kenken64.github.io/bitcoin-order-app/polyfills-es2015.d3e61f0dd2b58e518eca.js": "e2f28c3743afd2899e140ad831df9675c233c02b",
+    "https://kenken64.github.io/bitcoin-order-app/polyfills-es5.517f1d5415025b3e9b1a.js": "bc55c457c97924a880c8c5bee5337b8d12a7d7d8",
+    "https://kenken64.github.io/bitcoin-order-app/runtime-es2015.b948044840398824f16e.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "https://kenken64.github.io/bitcoin-order-app/runtime-es5.b948044840398824f16e.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "https://kenken64.github.io/bitcoin-order-app/styles.cd5cd5bb33d5d36675b8.css": "26453d47ec36430b523ace93361172ee2488aa30"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
