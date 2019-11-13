@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
+    "deploy": "now --no-clipboard --token=$NOW_TOKEN --public --prod"
   },
   "private": true,
   "dependencies": {
