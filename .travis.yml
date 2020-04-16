@@ -28,4 +28,3 @@ deploy:
   edge: true
   on:
     branch: development
-© 2020 GitHub, Inc.
