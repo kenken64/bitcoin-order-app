@@ -8,7 +8,7 @@ sudo: required
 notifications:
   email:
     recipients:
-      - bunnyppl@gmail.com
+      - lowyi@singnet.com
     on_success: always
     on_failure: always
 branches:
