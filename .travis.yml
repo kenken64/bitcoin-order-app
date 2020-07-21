@@ -16,6 +16,7 @@ branches:
    - master
 before_script:
   - npm install -g @angular/cli
+  - npm install -g @angular-devkit/build-angular
   - npm audit fix
   
 script:
