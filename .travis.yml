@@ -16,10 +16,10 @@ branches:
    - master
 before_script:
   - npm install -g @angular/cli
-  - npm install -g @angular-devkit/build-angular
-  - npm audit fix
   
 script:
+  - npm i @angular-devkit/build-angular@0.803.24
+  - npm audit fix
   - ng lint
   - ng build --prod --base-href https://kenken64.github.io/bitcoin-order-app/
 
