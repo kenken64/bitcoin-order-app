@@ -20,6 +20,7 @@ before_script:
 script:
   - ng lint
   - npm audit fix
+  - npm update
   - npm i @angular-devkit/build-angular@0.803.24
   - ng build --prod --base-href https://kenken64.github.io/bitcoin-order-app/
 
