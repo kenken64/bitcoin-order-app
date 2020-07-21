@@ -16,9 +16,12 @@ branches:
    - master
 before_script:
   - npm install -g @angular/cli
-script:
-  - ng build --prod --base-href https://kenken64.github.io/bitcoin-order-app/
+  - npm audit fix
   
+script:
+  - ng lint
+  - ng build --prod --base-href https://kenken64.github.io/bitcoin-order-app/
+
 deploy:
   provider: pages
   skip_cleanup: true
