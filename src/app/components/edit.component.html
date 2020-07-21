@@ -4,7 +4,7 @@
     “space-around” class="sideSpace">
 
     <mat-form-field>
-        <input matInput name = "contactno" placeholder="Contact No." ngModel #contactnoField="ngModel" value="{{order?.contactNo}}" required pattern="[0-9\-\)\(\+]+">
+        <input matInput name="contactNo" placeholder="Contact No." [(ngModel)]="order.contactNo" #contactnoField="ngModel" required pattern="[0-9\-\)\(\+]+">
     </mat-form-field>
     <mat-error *ngIf="contactnoField.touched && contactnoField.errors?.required">
         Contact No. is required
@@ -15,7 +15,7 @@
     </mat-error>
     <br>
     <mat-form-field>
-        <input matInput name = "name" placeholder="Name" value="{{order?.name}}" ngModel #nameField="ngModel" required>
+        <input matInput name="name" placeholder="Name" [(ngModel)]="order.name" #nameField="ngModel" required>
     </mat-form-field>
     <mat-error *ngIf="nameField.touched && nameField.invalid">
         Name is required
@@ -27,8 +27,7 @@
     <mat-radio-group
     class="radio-group"
     aria-labelledby="gender_label"
-    ngModel #genderField="ngModel"
-    value="{{gender}}"
+    [(ngModel)]="order.gender" #genderField="ngModel"
     name="gender" required>
         <mat-radio-button *ngFor="let gender of genderList" [value]="gender" class="radio-button">
             {{gender}}
@@ -40,7 +39,7 @@
     <br>
     <!-- without datepicker -->
     <mat-form-field>
-        <input matInput name = "dob" type="date" placeholder="Date of Birth" ngModel #dobField="ngModel" value="{{order?.dob}}" required (input)="checkAgeValid(dobField.value)">
+        <input matInput name="dob" type="date" placeholder="Date of Birth" #dobField="ngModel" [(ngModel)]="order.dob" required (input)="checkAgeValid(dobField.value)">
     </mat-form-field>
     <mat-error *ngIf="dobField.touched && dobField.errors?.required">
         Date of Birth is required
@@ -54,9 +53,9 @@
         <input matInput
         [matDatepicker]="datepicker"
         placeholder="Order Date"
-        value="{{order?.orderDate}}"
+        [(ngModel)]="order.orderDate"
         [min]="tomorrow"
-        ngModelname="orderDate">
+        name="orderDate">
         <mat-datepicker-toggle matSuffix
         [for]="datepicker">
         </mat-datepicker-toggle>
@@ -68,7 +67,7 @@
     <!-- Do NOT parse orderTypeField.value into the checkBuyOrSell event because it does not update fast enough -->
     <mat-form-field>
         <mat-label>Order Type</mat-label>
-        <select matNativeControl name="orderType" required ngModel #orderTypeField="ngModel" [(ngModel)]='orderTypeDefault' (ngModelChange)="[checkBuyOrSell($event), recalcMyAmt($event, unitField.value)]">
+        <select matNativeControl name="orderType" required  #orderTypeField="ngModel" [(ngModel)]='order.orderType' (ngModelChange)="[checkBuyOrSell($event), recalcMyAmt($event, unitField.value)]">
           <option value="Buy">Buy</option>
           <option value="Sell">Sell</option>
         </select>
@@ -76,7 +75,7 @@
     <br>
 
     <mat-form-field>
-        <input matInput name = "unit" type="number" placeholder="Order Unit" ngModel #unitField="ngModel" required min=0 value="{{order?.orderUnit}}" (input)="recalcMyAmt(orderTypeField.value, unitField.value)">
+        <input matInput name="orderUnit" type="number" placeholder="Order Unit" #unitField="ngModel" required min=0 [(ngModel)]="order.orderUnit" (input)="recalcMyAmt(orderTypeField.value, unitField.value)">
     </mat-form-field>
     <mat-error *ngIf="bitcoinForm.submitted && unitField.invalid">
         Order Unit is required
@@ -102,7 +101,7 @@
 
     <!-- disabled when order type is buy -->
     <mat-form-field>
-        <input matInput name = "myQr" placeholder="Paylah/Paynow QR Code URL" ngModel #myQrField="ngModel" value="{{order?.qrUrl}}" required [disabled]="buy">
+        <input matInput name="qrUrl" placeholder="Paylah/Paynow QR Code URL" #myQrField="ngModel" ngModel required [disabled]="order.orderType=== 'Buy'">
     </mat-form-field>
     <mat-error *ngIf="bitcoinForm.submitted && myQrField.invalid">
         Paylah/Paynow QR Code URL is required
@@ -114,7 +113,7 @@
 
     <!-- disabled when order type is sell -->
     <mat-form-field>
-        <input matInput name = "bitAddress" placeholder="Bitcoin Address" ngModel #bitAddressField="ngModel" value="{{order?.address}}" required [disabled]="!buy">
+        <input matInput name="address" placeholder="Bitcoin Address" #bitAddressField="ngModel" ngModel required [disabled]="order.orderType=== 'Sell'">
     </mat-form-field>
     <mat-error *ngIf="bitcoinForm.submitted && bitAddressField.invalid">
         Bitcoin Address is required

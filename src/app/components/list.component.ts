@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BitcoinService } from '../services/bitcoin.service';
 import { Router } from '@angular/router';
-import {DomSanitizer} from '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -10,21 +10,23 @@ import {MatIconRegistry} from '@angular/material/icon';
 })
 export class ListComponent implements OnInit {
   btcOrders = [];
-  constructor(private bitcoinSvc: BitcoinService, 
-    private router: Router, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) { 
-      iconRegistry.addSvgIcon(
-        'btc',
-        sanitizer.bypassSecurityTrustResourceUrl('assets/img/BCH.svg'));
+  constructor(private bitcoinSvc: BitcoinService,
+              private router: Router,
+              private iconRegistry: MatIconRegistry,
+              private sanitizer: DomSanitizer ) {
+    iconRegistry.addSvgIcon(
+      'btc',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/BCH.svg'));
   }
 
   ngOnInit() {
-    this.bitcoinSvc.getOrderList().then(result=>{
+    this.bitcoinSvc.getOrderList().then(result => {
       console.log(result);
-      this.btcOrders= result;
-    })
+      this.btcOrders = result;
+    });
   }
 
   navigateToEditOrder(orderId) {
-    this.router.navigate(['/edit/'+ orderId]);
+    this.router.navigate(['/edit/' + orderId]);
   }
 }
