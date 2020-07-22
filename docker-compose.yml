@@ -1,0 +1,9 @@
+version: '3'
+services:
+  client:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    volumes:
+      - /app/node_modules
+      - ./:/app

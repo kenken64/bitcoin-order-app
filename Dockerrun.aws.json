@@ -1,0 +1,12 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "client",
+        "image": "kenken64/bitcoin-app",
+        "hostname": "client",
+        "essential": false,
+        "memory": 128
+      }
+    ]
+  }
