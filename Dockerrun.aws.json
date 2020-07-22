@@ -3,8 +3,19 @@
     "containerDefinitions": [
       {
         "name": "client",
-        "image": "kenken64/bitcoin-app",
+        "image": {
+            "name": "kenken64/bitcoin-app",
+            "update": "true"
+        },
         "hostname": "client",
+        "essential": true,
+        "portMappings": [
+            {
+              "hostPort": 80,
+              "containerPort": 80
+            }
+        ],
+        "memory": 128
       }
     ]
   }
