@@ -2,14 +2,14 @@ FROM node:12.2.0 as builder
 
 WORKDIR '/app'
 
-COPY package.json ./
+COPY package.json .
 
 ENV PATH /app/node_modules/.bin:$PATH
 
-RUN npm install -y
 RUN npm install -g @angular/cli -y
+RUN npm install -y
 
-COPY /. /.
+COPY . .
 
 RUN ng build --prod
 
