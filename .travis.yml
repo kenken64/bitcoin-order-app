@@ -8,8 +8,8 @@ sudo: required
 services:
   - docker
 
-  before_install:
-    - docker build -t kenken64/bitcoin-app -f Dockerfile
+before_install:
+  - docker build -t kenken64/bitcoin-app -f Dockerfile
 
 notifications:
   email:
@@ -29,31 +29,27 @@ script:
   - npm update
   - npm i @angular-devkit/build-angular@0.803.24
   - ng build --prod --base-href https://kenken64.github.io/bitcoin-order-app/
-
-after_success:
   - docker build -t kenken64/bitcoin-app
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push kenken64/bitcoin-app
 
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: dist/bitcoin
-  edge: true
-  on:
-    branch: master
 
 deploy:
-  provider: elasticbeanstalk
-  region: ap-southeast-2
-  app: bitcoin-app
-  env: BitcoinApp-env
-  bucket_name: elasticbeanstalk-ap-southeast-2-869041221584
-  bucket_path: docker-bitcoinapp
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: $AWS_SECRET_KEY
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: dist/bitcoin
+    edge: true
+    on:
+     branch: master
+  - provider: elasticbeanstalk
+    region: ap-southeast-2
+    app: bitcoin-app
+    env: BitcoinApp-env
+    bucket_name: elasticbeanstalk-ap-southeast-2-869041221584
+    bucket_path: docker-bitcoinapp
+    on:
+     branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: secure: $AWS_SECRET_KEY
