@@ -9,7 +9,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t kenken64/bitcoin-app
+  - docker build -t kenken64/bitcoin-app .
 
 notifications:
   email:
@@ -31,7 +31,7 @@ script:
   - ng build --prod --base-href https://kenken64.github.io/bitcoin-order-app/
 
 after_success:
-  - docker build -t kenken64/bitcoin-app ./
+  - docker build -t kenken64/bitcoin-app .
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push kenken64/bitcoin-app
