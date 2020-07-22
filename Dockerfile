@@ -9,7 +9,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 RUN npm install -y
 RUN npm install -g @angular/cli -y
 
-COPY . .
+COPY /. /.
 
 RUN ng build --prod
 
