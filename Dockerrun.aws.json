@@ -1,21 +1,12 @@
 {
-    "AWSEBDockerrunVersion": 1,
-    "containerDefinitions": [
-      {
-        "name": "client",
-        "image": {
-            "name": "kenken64/bitcoin-app",
-            "update": "true"
-        },
-        "hostname": "client",
-        "essential": true,
-        "portMappings": [
-            {
-              "hostPort": 80,
-              "containerPort": 80
-            }
-        ],
-        "memory": 128
-      }
+    "AWSEBDockerrunVersion": "1",
+    "Image": {
+        "Name": "kenken64/bitcoin-app",
+        "Update": "true"
+    },
+    "Ports": [
+        {
+            "ContainerPort": "80"
+        }
     ]
-  }
+}
