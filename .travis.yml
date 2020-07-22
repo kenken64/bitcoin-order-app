@@ -9,7 +9,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t kenken64/bitcoin-app ./
+  - docker build -t kenken64/bitcoin-app
 
 notifications:
   email:
