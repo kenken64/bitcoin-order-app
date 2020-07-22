@@ -29,11 +29,12 @@ script:
   - npm update
   - npm i @angular-devkit/build-angular@0.803.24
   - ng build --prod --base-href https://kenken64.github.io/bitcoin-order-app/
+
+after_success:
   - docker build -t kenken64/bitcoin-app
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push kenken64/bitcoin-app
-
 
 deploy:
   - provider: pages
