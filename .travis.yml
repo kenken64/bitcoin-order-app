@@ -49,7 +49,6 @@ deploy:
     app: bitcoin-app
     env: BitcoinApp-env
     bucket_name: elasticbeanstalk-ap-southeast-2-869041221584
-    bucket_path: docker-bitcoinapp
     on:
      branch: master
     access_key_id: $AWS_ACCESS_KEY
