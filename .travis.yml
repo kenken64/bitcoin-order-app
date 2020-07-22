@@ -44,13 +44,3 @@ deploy:
     edge: true
     on:
      branch: master
-  - provider: elasticbeanstalk
-    region: ap-southeast-2
-    app: bitcoin-app
-    env: BitcoinApp-env
-    bucket_name: elasticbeanstalk-ap-southeast-2-869041221584
-    bucket_path: docker-bitcoinapp
-    on:
-     branch: master
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: secure: $AWS_SECRET_KEY
