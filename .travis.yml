@@ -53,8 +53,8 @@ deploy:
      branch: master
   - provider: elasticbeanstalk
     region: ap-southeast-2
-    app: bitcoin-app-1
-    env: BitcoinApp1-env
+    app:  bitcoin-app
+    env: BitcoinApp-env
     bucket_name: elasticbeanstalk-ap-southeast-2-869041221584
     on:
      branch: master
