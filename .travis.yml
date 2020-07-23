@@ -41,6 +41,7 @@ after_success:
   - eval $(aws ecr get-login --no-include-email --region ap-southeast-2) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
   - docker tag kenken64/bitcoin-app 869041221584.dkr.ecr.ap-southeast-2.amazonaws.com/bitcoinapp
   - docker push 869041221584.dkr.ecr.ap-southeast-2.amazonaws.com/bitcoinapp
+  - git push https://github.com/kenken64/bitcoin-order-app.git :feature
   
 
 deploy:
