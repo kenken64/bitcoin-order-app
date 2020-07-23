@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1595500613566,
+  "timestamp": 1595502918409,
   "index": "https://kenken64.github.io/bitcoin-order-app/index.html",
   "assetGroups": [
     {
@@ -10,7 +10,7 @@
       "urls": [
         "https://kenken64.github.io/bitcoin-order-app/favicon.ico",
         "https://kenken64.github.io/bitcoin-order-app/index.html",
-        "https://kenken64.github.io/bitcoin-order-app/main.06d75c0e9039070574a2.js",
+        "https://kenken64.github.io/bitcoin-order-app/main.6fe256c05d00b1591249.js",
         "https://kenken64.github.io/bitcoin-order-app/manifest.webmanifest",
         "https://kenken64.github.io/bitcoin-order-app/polyfills-es5.9984b73de88ed3be419b.js",
         "https://kenken64.github.io/bitcoin-order-app/polyfills.32032eb97db9086b35ca.js",
@@ -65,8 +65,8 @@
     "https://kenken64.github.io/bitcoin-order-app/assets/pixel.gif": "87bb3a5dcd68684dee2e401dc8ed016eb6bea75f",
     "https://kenken64.github.io/bitcoin-order-app/back6.b820a7afbeaf4e4c5246.jpg": "bb1d88aec46a62d77cf358868f406f68399e7b8f",
     "https://kenken64.github.io/bitcoin-order-app/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://kenken64.github.io/bitcoin-order-app/index.html": "7ad3de74b483c369579e3d6e655b5ba6c0f8e44c",
-    "https://kenken64.github.io/bitcoin-order-app/main.06d75c0e9039070574a2.js": "ea9354dfcb1910c53f6cee2eaae5c1817121190b",
+    "https://kenken64.github.io/bitcoin-order-app/index.html": "86a79f69daa61a39f3ea176eb92cfc49075c66ab",
+    "https://kenken64.github.io/bitcoin-order-app/main.6fe256c05d00b1591249.js": "851330392321d40c180f4bea9de61d5b18b47392",
     "https://kenken64.github.io/bitcoin-order-app/manifest.webmanifest": "da1eee6ec517d6398dc60e53058e5fec8304e10f",
     "https://kenken64.github.io/bitcoin-order-app/polyfills-es5.9984b73de88ed3be419b.js": "5df6f55804f28bac9ea459f02610eecd76984e94",
     "https://kenken64.github.io/bitcoin-order-app/polyfills.32032eb97db9086b35ca.js": "3e8f2ae52e6ec6d6ea042c79b5df6743c7394367",
