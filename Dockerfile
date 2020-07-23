@@ -1,4 +1,4 @@
-FROM node:12.2.0
+FROM node:12.2.0 as builder
 
 WORKDIR '/app'
 
@@ -16,4 +16,4 @@ RUN ng build --prod
 FROM nginx:latest
 
 EXPOSE 80
-COPY --from=0 /app/dist/bitcoin /usr/share/nginx/html
+COPY --from=builder /app/dist/bitcoin /usr/share/nginx/html
