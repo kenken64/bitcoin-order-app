@@ -52,10 +52,11 @@ deploy:
     on:
      branch: master
   - provider: elasticbeanstalk
-    region: ap-southeast-2
-    app:  bitcoin-app
-    env: BitcoinApp-env
-    bucket_name: elasticbeanstalk-ap-southeast-2-869041221584
+    region: "ap-southeast-2"
+    app:  "bitcoin-app-1"
+    env: "BitcoinApp1-env"
+    bucket_name: "elasticbeanstalk-ap-southeast-2-869041221584"
+    bucket_path: "bitcoin-app-1"
     on:
      branch: master
     access_key_id: $AWS_ACCESS_KEY

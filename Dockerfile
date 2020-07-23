@@ -15,5 +15,5 @@ RUN ng build --prod
 
 FROM nginx:latest
 
-EXPOSE 80:80
+EXPOSE 80
 COPY --from=0 /app/dist/bitcoin /usr/share/nginx/html
