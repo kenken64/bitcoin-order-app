@@ -28,3 +28,6 @@ deploy:
   edge: true
   on:
     branch: development
+
+after_success:
+  - git push origin :feature*
