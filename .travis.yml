@@ -1,4 +1,5 @@
 language: node_js
+
 node_js:
   - node
 
@@ -35,6 +36,12 @@ after_success:
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push kenken64/bitcoin-app
+  - pip install --user awscli # install aws cli w/o sudo
+  - export PATH=$PATH:$HOME/.local/bin # put aws in the path
+  - eval $(aws ecr get-login --no-include-email --region ap-southeast-2) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
+  - docker tag kenken64/bitcoin-app 869041221584.dkr.ecr.ap-southeast-2.amazonaws.com/bitcoinapp
+  - docker push 869041221584.dkr.ecr.ap-southeast-2.amazonaws.com/bitcoinapp
+  
 
 deploy:
   - provider: pages
