@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "bitcoin"
+  "defaultProject": "bitcoin",
+  "cli": {
+    "analytics": false
+  }
 }
