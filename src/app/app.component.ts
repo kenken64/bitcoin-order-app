@@ -12,14 +12,14 @@ export class AppComponent {
   constructor(private router: Router) { }
 
   buyBtc() {
-    console.log("BUY !");
+    console.log('BUY !');
     setTimeout(() => {
       this.router.navigate(['buy-form/Buy']);
     }, 400);
   }
 
   sellBtc() {
-    console.log("SELL !");
+    console.log('SELL !');
     setTimeout(() => {
       this.router.navigate(['sell-form/Sell']);
     }, 400);

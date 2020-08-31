@@ -32,14 +32,9 @@ export class FormComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnInit() {
-    this.activatedRoute.data.subscribe(data=>{
-      const params = this.activatedRoute.snapshot.params;
-      console.log(params);
-      //Now we have data and params together 
-    });
     this.orderTypeDefault = this.activatedRoute.snapshot.params.orderType;
     console.log(this.orderTypeDefault);
-    if(this.orderTypeDefault === "Sell"){
+    if(this.orderTypeDefault === 'Sell'){
       this.buy = false;
     }
 
@@ -54,7 +49,7 @@ export class FormComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   processForm(f: NgForm, myPrice, myAmt) {
-    const orderType = this.buy ? "Buy": "Sell";
+    const orderType = this.buy ? 'Buy': 'Sell';
     console.log(orderType);
     const x = this.bitcoinSvc.saveOrderDetails(f.value, myPrice, myAmt, orderType).then(result => {
       console.log(result);
