@@ -49,7 +49,7 @@ export class FormComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   processForm(f: NgForm, myPrice, myAmt) {
-    const orderType = this.buy ? 'Buy': 'Sell';
+    const orderType = this.buy ? 'Buy' : 'Sell';
     console.log(orderType);
     const x = this.bitcoinSvc.saveOrderDetails(f.value, myPrice, myAmt, orderType).then(result => {
       console.log(result);
