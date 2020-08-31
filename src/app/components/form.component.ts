@@ -103,14 +103,14 @@ export class FormComponent implements OnInit, AfterViewInit, OnChanges {
 
   resetForm(f: NgForm) {
     console.log(f.value);
-    f.controls['contactno'].reset();
-    f.controls['bitAddress'].reset();
-    f.controls['myQr'].reset();
-    f.controls['dob'].reset();
-    f.controls['gender'].reset();
-    f.controls['name'].reset();
-    f.controls['orderDate'].reset();
-    f.controls['unit'].reset();
+    f.controls['contactno'.toString()].reset();
+    f.controls['bitAddress'.toString()].reset();
+    f.controls['myQr'.toString()].reset();
+    f.controls['dob'.toString()].reset();
+    f.controls['gender'.toString()].reset();
+    f.controls['name'.toString()].reset();
+    f.controls['orderDate'.toString()].reset();
+    f.controls['unit'.toString()].reset();
   }
 
 }
