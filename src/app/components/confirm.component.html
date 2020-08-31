@@ -12,26 +12,7 @@
     <h3> Order Unit : {{order?.orderUnit}}</h3>
     <h3> Price : SGD{{order?.price}}</h3>
     <h3> Price * Unit: SGD{{order?.amt}}</h3>
-    <h3> Paylah/Paynow QR Code URL : </h3>
-    <div><img src = "{{order?.qrUrl}}" alt="QR Code image"></div>
-    <h3> Bitcoin Address : {{order?.address}}</h3>
-</div>
-
-<div *ngIf="order?.orderType || order?.orderType === 'Sell'">
-    <mat-chip-list *ngIf="order.orderType==='Sell'" aria-label="btc order type">
-            <mat-chip color="primary" selected>{{order.orderType}} </mat-chip>
-        </mat-chip-list><br>
-    Custodian BTC address = 'bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq'<br>
-    Once the BTC are wired across, we will send you the funds in SGD to your Paynow/Paylah bank account.
-</div>
-
-<div *ngIf="order?.orderType || order?.orderType === 'Buy'">
-    <mat-chip-list *ngIf="order.orderType==='Buy'" aria-label="btc order type">
-        <mat-chip color="accent" selected>{{order.orderType}} </mat-chip>
-    </mat-chip-list> 
-    <br>
-    <img src = "https://images-eu.ssl-images-amazon.com/images/I/51LLSXPtTtL.png" alt="QR Code image">
-    <br>
-    Once the SGD funds are wire across to the above QR code, we will send you the bitcoin to your wallet address.
+    
+    
 </div>
 </mat-card>

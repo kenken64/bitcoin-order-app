@@ -11,5 +11,5 @@ export class Order {
         public qrUrl: string,
         public address: string,
         public amt: number,
-        public id?: number ) { }
+        public id?: string ) { }
 }

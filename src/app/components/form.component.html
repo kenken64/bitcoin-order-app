@@ -124,7 +124,7 @@
 
     <div fxLayout="row" fxLayoutAlign="space-around">
         <button mat-raised-button type="submit" color="primary" [disabled] = "bitcoinForm.invalid || !validAge">Order</button>
-        <button mat-raised-button type="reset" >Reset</button>
+        <button mat-raised-button (click)="resetForm(bitcoinForm)" >Reset</button>
 
     </div>
 

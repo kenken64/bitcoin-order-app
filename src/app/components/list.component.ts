@@ -3,6 +3,7 @@ import { BitcoinService } from '../services/bitcoin.service';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -20,10 +21,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bitcoinSvc.getOrderList().then(result => {
-      console.log(result);
-      this.btcOrders = result;
-    });
+    console.log("list");
   }
 
   navigateToEditOrder(orderId) {

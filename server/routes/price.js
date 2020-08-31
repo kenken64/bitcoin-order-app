@@ -1,24 +1,22 @@
-const request = require('request');
+const ba = require('bitcoinaverage');
 
 module.exports = function(app,API_URL){
     const BTC_PRICE_API_URL = `${API_URL}/price`;
-    const PRICE_API_URL = process.env.PRICE_API_URL;
+    const publicKey = process.env.BTC_PUBLIC_KEY;
+    const secretKey = process.env.BTC_SECRET_KEY;
 
     app.get(BTC_PRICE_API_URL, (req, res)=>{
         let primaryCurrency = req.query.primaryCurry;
         let secondaryCurrency = req.query.secondaryCurry;
-        const options = {
-            url: `${PRICE_API_URL}${primaryCurrency},${secondaryCurrency}`,
-            headers: {
-                'Accept': 'application/json',
-                'X-testing': 'testing'
-            }
-        };
+        console.log(primaryCurrency);
+        console.log(secondaryCurrency);
         
-        request(options, (error, response, body)=>{
-            if (!error && response.statusCode == 200) {
-                res.status(200).json(JSON.parse(body));
-            };
-        });
+        var restClient = ba.restfulClient(publicKey, secretKey);
+        restClient.getTickerDataPerSymbol('global', primaryCurrency + secondaryCurrency, function(response) {
+            console.log(response);
+            res.status(200).json(JSON.parse(response));
+        }, function(error){
+            console.log(error);
+        }) ;
     })
 }

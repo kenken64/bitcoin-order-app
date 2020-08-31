@@ -16,7 +16,7 @@ export class BitcoinService {
 
   public getPrice(): Promise<any> {
     return (
-      this.http.get<any>(`${this.bitcoinPriceApiUrl}?primaryCurry=SGD&secondary=BTC`).toPromise()
+      this.http.get<any>(`${this.bitcoinPriceApiUrl}?primaryCurry=BTC&secondaryCurry=SGD`).toPromise()
     );
   }
 
@@ -24,16 +24,12 @@ export class BitcoinService {
     return this.http.get<Order>(this.bitcoinApiUrl + '/' + orderId).toPromise();
   }
 
-  public getOrderList(): Promise<any> {
-    return this.http.get<any>(this.bitcoinApiUrl).toPromise();
-  }
-
   public updateOrderDetails(orderId, order) {
     return this.http.put<any>(this.bitcoinApiUrl + '?orderId='
       + orderId, order).toPromise();
   }
 
-  public saveOrderDetails(orderDet, myPrice, myAmt) {
+  public saveOrderDetails(orderDet, myPrice, myAmt, orderType) {
     const svcOrder = new Order(
       '',
       '',
@@ -54,7 +50,7 @@ export class BitcoinService {
     svcOrder.dob = orderDet.dob;
     svcOrder.gender = orderDet.gender;
     svcOrder.name = orderDet.name;
-    svcOrder.orderType = orderDet.orderType;
+    svcOrder.orderType = orderType;
     svcOrder.orderUnit = orderDet.unit;
     svcOrder.qrUrl = orderDet.myQr;
     svcOrder.orderDate = orderDet.orderDate;
