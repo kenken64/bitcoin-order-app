@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("list");
+    console.log('list');
   }
 
   navigateToEditOrder(orderId) {
