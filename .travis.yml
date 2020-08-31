@@ -52,13 +52,13 @@ deploy:
     edge: true
     on:
      branch: master
-  - provider: elasticbeanstalk
-    region: "ap-southeast-2"
-    app:  "bitcoin-app-1"
-    env: "BitcoinApp1-env"
-    bucket_name: "elasticbeanstalk-ap-southeast-2-869041221584"
-    bucket_path: "bitcoin-app-1"
-    on:
-     branch: master
-    access_key_id: $AWS_ACCESS_KEY_ID
-    secret_access_key: $AWS_SECRET_ACCESS_KEY
+  #- provider: elasticbeanstalk
+  #  region: "ap-southeast-2"
+  #  app:  "bitcoin-app-1"
+  #  env: "BitcoinApp1-env"
+  #  bucket_name: "elasticbeanstalk-ap-southeast-2-869041221584"
+  #  bucket_path: "bitcoin-app-1"
+  #  on:
+  #   branch: master
+  #  access_key_id: $AWS_ACCESS_KEY_ID
+  #  secret_access_key: $AWS_SECRET_ACCESS_KEY

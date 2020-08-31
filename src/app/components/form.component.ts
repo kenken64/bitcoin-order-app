@@ -34,7 +34,7 @@ export class FormComponent implements OnInit, AfterViewInit, OnChanges {
   ngOnInit() {
     this.orderTypeDefault = this.activatedRoute.snapshot.params.orderType;
     console.log(this.orderTypeDefault);
-    if(this.orderTypeDefault === 'Sell'){
+    if ( this.orderTypeDefault === 'Sell' ) {
       this.buy = false;
     }
 
