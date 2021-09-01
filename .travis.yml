@@ -1,64 +1,30 @@
 language: node_js
-
 node_js:
   - node
 
 dist: bionic
 sudo: required
 
-services:
-  - docker
-
-before_install:
-  - docker build -t kenken64/bitcoin-app .
-
 notifications:
   email:
     recipients:
-      - bunnyppl@gmail.com
+      - jeremy.low@ncs.com.sg
     on_success: always
     on_failure: always
 branches:
   only:
-   - master
+   - development
 before_script:
   - npm install -g @angular/cli
-  
-script:
-  - ng lint
-  - npm audit fix
-  - npm update
-  - npm i @angular-devkit/build-angular@0.803.24
-  - ng build --prod --base-href https://kenken64.github.io/bitcoin-order-app/
 
-after_success:
-  - docker build -t kenken64/bitcoin-app .
-  # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push kenken64/bitcoin-app
-  - pip install --user awscli # install aws cli w/o sudo
-  - export PATH=$PATH:$HOME/.local/bin # put aws in the path
-  - eval $(aws ecr get-login --no-include-email --region ap-southeast-2) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
-  - docker tag kenken64/bitcoin-app 869041221584.dkr.ecr.ap-southeast-2.amazonaws.com/bitcoinapp
-  - docker push 869041221584.dkr.ecr.ap-southeast-2.amazonaws.com/bitcoinapp
-  - git push https://github.com/kenken64/bitcoin-order-app.git :feature
-  
+script:
+  - ng build --prod --base-href https://jeremy-low.github.io/bitcoin-order-app/
 
 deploy:
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    local_dir: dist/bitcoin
-    edge: true
-    on:
-     branch: master
-  #- provider: elasticbeanstalk
-  #  region: "ap-southeast-2"
-  #  app:  "bitcoin-app-1"
-  #  env: "BitcoinApp1-env"
-  #  bucket_name: "elasticbeanstalk-ap-southeast-2-869041221584"
-  #  bucket_path: "bitcoin-app-1"
-  #  on:
-  #   branch: master
-  #  access_key_id: $AWS_ACCESS_KEY_ID
-  #  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/bitcoin
+  edge: true
+  on:
+    branch: development
