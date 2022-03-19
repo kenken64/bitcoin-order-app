@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      - uses: browser-actions/setup-chrome@latest
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -42,10 +42,6 @@ jobs:
       - name: Lint
         run: |
           npm run lint
-      - name: Setup headless chrome
-        uses: browser-actions/setup-chrome@latest
-        run: |
-          chrome --version
       - name: Test
         run: |
           npm run test
@@ -65,7 +61,6 @@ jobs:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
-
       - name: Deploy
         run: |
           npm run deploy
