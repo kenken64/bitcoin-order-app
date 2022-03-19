@@ -42,9 +42,6 @@ jobs:
       - name: Lint
         run: |
           npm run lint
-      - name: Test
-        run: |
-          npm run test -- --prod
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
