@@ -42,6 +42,9 @@ jobs:
       - name: Lint
         run: |
           npm run lint
+      - name: Setup headless chrome
+        uses: browser-actions/setup-chrome@latest
+        run: chrome --version
       - name: Test
         run: |
           npm run test
