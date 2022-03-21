@@ -30,6 +30,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Bitcoin Changer v2');
+    expect(compiled.querySelector('.mat-toolbar .mat-toolbar-row span').textContent).toContain('Bitcoin Changer v2');
   });
 });
