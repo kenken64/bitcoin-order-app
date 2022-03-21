@@ -42,6 +42,9 @@ jobs:
       - name: Lint
         run: |
           npm run lint
+      - name: Update types to latest
+        run: |
+          npm install --save-dev @types/node@latest
       - name: Test
         run: |
           npm run test
