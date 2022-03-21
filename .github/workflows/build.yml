@@ -38,7 +38,7 @@ jobs:
           npm ci
       - name: Build
         run: |
-          npm run build -- --prod
+          npm run build --
       - name: Lint
         run: |
           npm run lint
