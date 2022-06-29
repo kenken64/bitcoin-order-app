@@ -38,7 +38,7 @@ jobs:
           npm ci --force
       - name: Build
         run: |
-          npm run build --
+          npm run build --force
       - name: Lint
         run: |
           npm run lint
