@@ -1,29 +1,31 @@
 language: node_js
 node_js:
-	- node
+ - node
 
 dist: bionic
 sudo: required
 
 notifications:
-	email:
-		recipients:
-		- leinandar@gmail.com
-		on_success: always
-		on_failure: always
+ email:
+  recipients:
+   - leinandar@gmail.com
+  on_success: always
+  on_failure: always
+
 branches:
-	only:
-	- githubcicd
+ only:
+ - githubcicd
+
 before_script:
-	- npm install -g @angular/cli
+ - npm install -g @angular/cli
 
 script:
-	-ng build --prod --base-href https://leinandarm.github.io/bitcoin-order-app2/
+ - ng build --prod --base-href https://leinandarm.github.io/bitcoin-order-app2/
 
 deploy:
-	provider: pages
-	skip_cleanup: true
-	github_token: $GITHUB_TOKEN
+ provider: pages
+ skip_cleanup: true
+ github_token: $GITHUB_TOKEN
 	local_dir: dist/bitcoin
 	edge: true
 	on:
