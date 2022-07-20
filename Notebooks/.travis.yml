@@ -1,32 +1,64 @@
 language: node_js
+
 node_js:
- - node
+  - node
 
 dist: bionic
 sudo: required
 
+services:
+  - docker
+
+before_install:
+  - docker build -t leinandarm/bitcoin-app2 .
+
 notifications:
- email:
- recipients:
- - leinandar@gmail.com
- on_success: always
- on_failure: always
-
+  email:
+    recipients:
+      - leinandar@gmail.com
+    on_success: always
+    on_failure: always
 branches:
- only:
- - githubcicd
-
+  only:
+   - githubcicd
 before_script:
- - npm install -g @angular/cli
-
+  - npm install -g @angular/cli
+  
 script:
- - ng build --prod --base-href https://leinandarm.github.io/bitcoin-order-app2/
+  - ng lint
+  - npm audit fix
+  - npm update
+  - npm i @angular-devkit/build-angular@0.803.24
+  - ng build --prod --base-href https://leinandarm.github.io/bitcoin-order-app2/
+
+after_success:
+  - docker build -t leinandarm/bitcoin-app2 .
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push leinandarm/bitcoin-app2
+  - pip install --user awscli # install aws cli w/o sudo
+  - export PATH=$PATH:$HOME/.local/bin # put aws in the path
+  - eval $(aws ecr get-login --no-include-email --region ap-southeast-2) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
+  - docker tag leinandarm/bitcoin-app 869041221584.dkr.ecr.ap-southeast-2.amazonaws.com/bitcoinapp
+  - docker push 869041221584.dkr.ecr.ap-southeast-2.amazonaws.com/bitcoinapp
+  - git push https://github.com/leinandarm/bitcoin-order-app2.git :feature
+  
 
 deploy:
- provider: pages
- skip_cleanup: true
- github_token: $GITHUB_TOKEN
- local_dir: dist/bitcoin
- edge: true
- on:
- branch: githubcicd
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: dist/bitcoin
+    edge: true
+    on:
+     branch: githubcicd
+  #- provider: elasticbeanstalk
+  #  region: "ap-southeast-2"
+  #  app:  "bitcoin-app-1"
+  #  env: "BitcoinApp1-env"
+  #  bucket_name: "elasticbeanstalk-ap-southeast-2-869041221584"
+  #  bucket_path: "bitcoin-app-1"
+  #  on:
+  #   branch: githubcicd
+  #  access_key_id: $AWS_ACCESS_KEY_ID
+  #  secret_access_key: $AWS_SECRET_ACCESS_KEY
