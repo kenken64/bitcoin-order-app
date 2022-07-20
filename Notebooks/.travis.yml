@@ -7,10 +7,10 @@ sudo: required
 
 notifications:
  email:
-  recipients:
-   - leinandar@gmail.com
-  on_success: always
-  on_failure: always
+ recipients:
+ - leinandar@gmail.com
+ on_success: always
+ on_failure: always
 
 branches:
  only:
@@ -26,7 +26,7 @@ deploy:
  provider: pages
  skip_cleanup: true
  github_token: $GITHUB_TOKEN
-	local_dir: dist/bitcoin
-	edge: true
-	on:
-	  branch: githubcicd
+ local_dir: dist/bitcoin
+ edge: true
+ on:
+ branch: githubcicd
