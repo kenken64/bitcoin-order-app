@@ -13,6 +13,10 @@ jobs:
         node-version: [16.x]
 
     steps:
+      - name: Change script permission
+        run: |
+          chmod +x scripts/zap-script.sh
+
       - name: ZAP scan
         run: scripts/zap-script.sh
 
