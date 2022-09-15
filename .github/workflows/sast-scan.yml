@@ -30,8 +30,8 @@ jobs:
 
       - name: OWASP Dependency Check
         run: |
-          wget https://github.com/jeremylong/DependencyCheck/releases/download/v6.0.2/dependency-check-6.0.2-release.zip
-          unzip dependency-check-6.0.2-release.zip
+          wget https://github.com/jeremylong/DependencyCheck/releases/download/v7.2.0/dependency-check-7.2.0-release.zip
+          unzip dependency-check-7.2.0-release.zip
 
       - name: Run scan with ODC
         run: |

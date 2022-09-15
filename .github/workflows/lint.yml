@@ -1,0 +1,32 @@
+name: "linting-tool-scan"
+
+on:
+  push:
+    branches: [githubcicd]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install dependencies
+        run: |
+          sudo apt install npm
+          sudo npm install --package-lock
+          npm audit fix
+
+      - name: Installing JSHint
+        run: |
+          sudo npm install -g jshint
+
+      - name: Run scan with JSHint
+        run: scripts/jshint-script.sh
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: linting tool report
+          path: |
+            ./JSHint-report
