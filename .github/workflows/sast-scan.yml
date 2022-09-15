@@ -15,13 +15,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: install dependencies
+      - name: Install Dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: |
-          sudo apt install npm
-          sudo npm install --package-lock
-          npm install -g npm@8.19.2
-          npm audit fix
-             first
+          npm ci --force
+
+      # - name: install dependencies
+      #   run: |
+      #     sudo apt install npm
+      #     sudo npm install --package-lock
+      #     npm install -g npm@8.19.2
+      #     npm audit fix
+      #        first
 
       - name: OWASP Dependency Check
         run: |
