@@ -1,4 +1,4 @@
-name: "sast-scan"
+name: "owasp-scan"
 
 on:
   push:
