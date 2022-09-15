@@ -38,13 +38,13 @@ jobs:
           npm ci
       - name: Build
         run: |
-          npm run build --configuration=production
+          npm run build -- --prod
       - name: Lint
         run: |
           npm run lint
       - name: Test
         run: |
-          npm run test
+          npm run test -- --prod
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
