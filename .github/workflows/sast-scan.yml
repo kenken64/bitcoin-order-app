@@ -20,14 +20,6 @@ jobs:
         run: |
           npm ci --force
 
-      # - name: install dependencies
-      #   run: |
-      #     sudo apt install npm
-      #     sudo npm install --package-lock
-      #     npm install -g npm@8.19.2
-      #     npm audit fix
-      #        first
-
       - name: OWASP Dependency Check
         run: |
           wget https://github.com/jeremylong/DependencyCheck/releases/download/v7.2.0/dependency-check-7.2.0-release.zip
