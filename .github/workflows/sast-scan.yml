@@ -1,0 +1,37 @@
+name: "sast-scan"
+
+on:
+  push:
+    branches: [githubcicd]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: |
+          npm ci --force
+
+      - name: OWASP Dependency Check
+        run: |
+          wget https://github.com/jeremylong/DependencyCheck/releases/download/v7.2.0/dependency-check-7.2.0-release.zip
+          unzip dependency-check-7.2.0-release.zip
+
+      - name: Run scan with ODC
+        run: |
+          dependency-check/bin/dependency-check.sh --project "bitcoin" --scan . > ODC-report
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: sast report
+          path: |
+            ./ODC-report
