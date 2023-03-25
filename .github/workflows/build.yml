@@ -2,7 +2,7 @@ name: Bitcoin order App
 on:
   push:
     branches:
-      - master
+      - githubcicd
 jobs:
   ci:
     runs-on: ubuntu-latest
