@@ -7,7 +7,7 @@
     "build": "ng build --configuration=production",
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
-    "deploy": "ng deploy --base-href=/bitcoin-order-app/",
+    "deploy": "ng deploy --base-href=/bitcoin-order-app/ --no-silent",
     "e2e": "ng e2e"
   },
   "private": true,
