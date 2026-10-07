@@ -1,4 +1,4 @@
-name: Bitcoin order App xxxx
+name: Bitcoin order App
 on:
   push:
     branches:
@@ -67,4 +67,3 @@ jobs:
       - name: Deploy
         run: |
           npm run deploy
-
