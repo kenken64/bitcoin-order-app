@@ -1,4 +1,4 @@
-name: Bitcoin order App xxxx
+name: Bitcoin order App
 on:
   push:
     branches:
@@ -13,6 +13,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.WORKSHOP6_GITHUB_TOKEN }}
       - uses: browser-actions/setup-chrome@latest
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -67,4 +69,3 @@ jobs:
       - name: Deploy
         run: |
           npm run deploy
-
